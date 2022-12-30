@@ -1,0 +1,18 @@
+{
+  "name": "fiverr_api",
+  "version": "1.0.0",
+  "description": "This is an api",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "start": "node index.js --experimental-modules",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Sudayn",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.20.1",
+    "express": "^4.18.2",
+    "firebase-admin": "^11.4.1"
+  }
+}
