@@ -28,6 +28,6 @@ app.use('/auth', routes.auth)
 app.use('/offer', routes.offer)
 app.use('/task', routes.task)
 
-app.listen(80, () => {
+app.listen(3000, () => {
     console.log('started live at 80')
 })
