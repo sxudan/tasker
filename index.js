@@ -2,6 +2,7 @@ import express from 'express'
 import routes from './routes/index.js'
 import bodyParser from 'body-parser'
 // import * as https from 'https'
+import cors from 'cors'
 import * as http from 'http'
 import * as FS from 'fs'
 const app = express()
@@ -25,7 +26,7 @@ var serviceAccount = {
 admin.initializeApp({
   credential: admin.credential.cert(serviceAccount)
 });
-
+app.use(cors())
 app.use(bodyParser.json())
 app.use('/auth', routes.auth)
 app.use('/offer', routes.offer)
