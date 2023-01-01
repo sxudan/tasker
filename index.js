@@ -1,6 +1,9 @@
 import express from 'express'
 import routes from './routes/index.js'
 import bodyParser from 'body-parser'
+import * as https from 'https'
+import * as http from 'http'
+import * as FS from 'fs'
 const app = express()
 
 import admin from 'firebase-admin'
@@ -28,6 +31,20 @@ app.use('/auth', routes.auth)
 app.use('/offer', routes.offer)
 app.use('/task', routes.task)
 
-app.listen(3000, () => {
-    console.log('started live at 80')
+const httpServer = http.createServer(app)
+
+const httpsServer = https.createServer({
+  key: FS.readFileSync("server.key"),
+  cert: FS.readFileSync("server.cert")
+}, app)
+
+const httpsPort = 443
+const httpPort = 80
+
+httpServer.listen(httpPort, () => {
+  console.log(`started live at ${httpPort}`)
+})
+
+httpsServer.listen(httpsPort, () => {
+    console.log(`started live at ${httpsPort}`)
 })
